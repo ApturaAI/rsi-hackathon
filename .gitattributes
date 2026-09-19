@@ -1,0 +1,3 @@
+# Task scripts and Dockerfiles run in Linux containers; keep them LF on every platform.
+*.sh text eol=lf
+Dockerfile text eol=lf

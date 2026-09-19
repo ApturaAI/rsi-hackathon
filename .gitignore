@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Credentials
+.env
+.env.*
+!.env_example
+.litellm_config*.yaml
+
+# Run outputs and downloaded data
+runs/
+dataset/
+*.tar.zst
+build/

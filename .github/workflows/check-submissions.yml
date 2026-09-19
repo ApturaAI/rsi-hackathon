@@ -1,0 +1,27 @@
+name: check-submissions
+
+on:
+  pull_request:
+    paths:
+      - "submissions/**"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - name: Check changed skill folders
+        run: |
+          set -euo pipefail
+          dirs=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- submissions \
+            | awk -F/ 'NF>=4 {print $1"/"$2"/"$3}' | sort -u)
+          if [ -z "$dirs" ]; then echo "no skill folders changed"; exit 0; fi
+          status=0
+          for d in $dirs; do
+            echo "== $d"
+            if [ -d "$d" ]; then uv run stbench check-skill "$d" || status=1; fi
+          done
+          exit $status

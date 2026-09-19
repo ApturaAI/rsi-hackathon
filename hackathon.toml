@@ -1,0 +1,82 @@
+# The hackathon learner contract. `stbench eval` applies exactly these values, and the
+# organizers score every submission (and the autonomous baseline) with the same file,
+# so your local numbers come from the same frozen learner as the leaderboard.
+# Do not edit it for your submission: scored runs use the organizers' copy.
+schema_version = 1
+
+[data]
+# Hugging Face dataset holding the training tasks, one Harbor task folder per task:
+#   <domain>/tasks/<task-name>/{task.toml, instruction.md, environment/, tests/}
+hf_repo = "armin-aptura/skilltrainbench-public"
+hf_revision = "main"
+local_dir = "dataset/hackathon"
+
+[learner]
+# Runware model id of the frozen learner (see `GET https://api.runware.ai/v1/models`).
+model = "zai-glm-5-3-flash"
+# Harbor agent that drives the learner inside each task container.
+harbor_agent = "openhands-sdk"
+# Extra `harbor run --ak key=value` arguments for every domain. `version` pins the
+# openhands-sdk / openhands-tools installed in each task container (same as the
+# organizers' internal runs; newer releases crash on standard usage fields).
+agent_kwargs = { version = "1.47.0" }
+# Task attempts run in parallel during `stbench eval` (one Docker container each).
+concurrency = 4
+
+[upstream]
+# OpenAI-compatible endpoint the local metering gateway forwards learner calls to.
+# No trailing /v1: the gateway appends /v1/chat/completions itself.
+base_url = "https://api.runware.ai"
+key_env = "RUNWARE_API_KEY"
+
+[submission]
+# Limits `stbench check-skill` enforces on a submitted skill folder.
+max_total_bytes = 1_000_000
+max_files = 200
+
+# One table per domain. Tasks are read from `dataset_dir`, which defaults to
+#   dataset/hackathon/<domain>/tasks/<task-name>/
+# The dataset keeps each benchmark under its own upstream name, so a domain whose
+# name differs from that folder sets `dataset_dir` explicitly.
+# Auxiliary models (graders, simulated users) run through their own metered pool,
+# separate from the learner.
+
+[domains.qf]
+benchmark = "qfbench"
+dataset_dir = "dataset/hackathon/QuantitativeFinance-Bench/tasks"
+max_iterations = 100
+eval_budget_tokens = 4_000_000
+
+[domains.health]
+benchmark = "healthbench"
+dataset_dir = "dataset/hackathon/healthbench/tasks"
+# Learner turns per consultation.
+max_iterations = 4
+agent_timeout_s = 300
+# Rubric grader, called from inside each task's verifier.
+# Same grader as the organizers' internal HealthBench runs (Claude Haiku 4.5, temperature 0).
+judge_model = "anthropic-claude-haiku-4-5"
+judge_temperature = 0.0
+judge_budget_tokens = 2_000_000
+eval_budget_tokens = 2_000_000
+
+[domains.tau3]
+benchmark = "tau3bench"
+dataset_dir = "dataset/hackathon/tau3-bench/tasks"
+max_iterations = 100
+# Simulated customer and the natural-language assertion grader.
+# Same as the organizers' internal tau3 runs (Claude Sonnet 4.6).
+user_model = "anthropic-claude-sonnet-4-6"
+nl_assertions_model = "anthropic-claude-sonnet-4-6"
+user_reasoning_effort = "low"
+judge_budget_tokens = 300_000_000
+eval_budget_tokens = 4_000_000
+
+[domains.hle]
+benchmark = "hlebench"
+max_iterations = 50
+# Answer grader.
+# Same as the organizers' internal HLE runs (Claude Sonnet 4.6).
+judge_model = "anthropic-claude-sonnet-4-6"
+judge_budget_tokens = 300_000_000
+eval_budget_tokens = 2_000_000
