@@ -26,7 +26,20 @@ research/
   reports/                       parse + audit summaries
   experiments/                   manifests + append-only log
   schemas/experiment_schema.json
+  dashboard/                     local run/audit console (no evals)
 ```
+
+## Dashboard
+
+Local-only research console. It reads completed runs and derived reports;
+it never launches `stbench eval` or model calls.
+
+```bash
+uv run python research/dashboard/server.py
+```
+
+Open [http://localhost:8787](http://localhost:8787). Refresh the page after
+a new run appears under `runs/`.
 
 ## Workflow
 
