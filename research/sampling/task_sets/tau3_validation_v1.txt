@@ -1,0 +1,8 @@
+tau3-bench__tau3-banking_knowledge-task-018
+tau3-bench__tau3-banking_knowledge-task-043
+tau3-bench__tau3-banking_knowledge-task-045
+tau3-bench__tau3-banking_knowledge-task-048
+tau3-bench__tau3-banking_knowledge-task-049
+tau3-bench__tau3-banking_knowledge-task-051
+tau3-bench__tau3-banking_knowledge-task-071
+tau3-bench__tau3-banking_knowledge-task-098

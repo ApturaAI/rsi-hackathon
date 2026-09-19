@@ -1,0 +1,18 @@
+run: /Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/health-baseline
+domain: health (healthbench)
+arms: baseline
+tasks: 5 · attempts: 5
+official baseline_rate: 0.2452
+official note: pipeline_green_not_statistically_valid
+outcome_counts: {'learner_outcome': 5}
+mean_score_by_arm (learner_outcome only): {'baseline': 0.2452}
+learner tokens: 124201 · learner $0.00737613 · grader $0.177921
+
+per-attempt:
+  baseline  0.09090909090909091 learner_outcome  ans=218 steps=5 tools=3 theme=context_seeking  healthbench-hard-05bb23aa-3965-419a-a986-79c301d9270e
+  baseline  0.5588235294117647 learner_outcome  ans=1814 steps=4 tools=2 theme=health_data_tasks  healthbench-hard-034d78e2-0873-4e4a-9621-735b51d0d020
+  baseline  0.3118279569892473 learner_outcome  ans=2443 steps=5 tools=3 theme=context_seeking  healthbench-hard-02109c83-28b1-4269-b4b2-5ceefb66524e
+  baseline  0.1643835616438356 learner_outcome  ans=2442 steps=6 tools=4 theme=context_seeking  healthbench-hard-00656524-cc51-47a3-bfb5-85e7096ee1c8
+  baseline  0.1      learner_outcome  ans=2380 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-062e3a49-07e0-4b5c-a941-ceb8cc4111e4
+
+Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted.

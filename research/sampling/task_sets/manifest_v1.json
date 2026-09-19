@@ -1,0 +1,228 @@
+{
+  "version": "v1",
+  "seed": 20260919,
+  "source_index": "/Users/dan/2026/Hackathons/Aptura/rsi-hackathon/research/data/task_index.jsonl",
+  "source_pool": "official training split (dev_task_names only); organiser held-out names unused",
+  "selection": "Deterministic largest-remainder allocation within official metadata strata. Tasks are sorted by name, then shuffled with Random(f'{seed}:{domain}:{version}'). No answer, rubric, reference, or expected-action fields are read.",
+  "domains": [
+    {
+      "domain": "health",
+      "seed": 20260919,
+      "version": "v1",
+      "n_pool": 200,
+      "n_dev": 12,
+      "n_validation": 12,
+      "requested": {
+        "dev": 12,
+        "validation": 12
+      },
+      "strata": {
+        "context_seeking": {
+          "pool": 100,
+          "dev": 6,
+          "validation": 6,
+          "unused": 88
+        },
+        "emergency_referrals": {
+          "pool": 37,
+          "dev": 2,
+          "validation": 2,
+          "unused": 33
+        },
+        "health_data_tasks": {
+          "pool": 63,
+          "dev": 4,
+          "validation": 4,
+          "unused": 55
+        }
+      },
+      "dev": [
+        "healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c",
+        "healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755",
+        "healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed",
+        "healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902",
+        "healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef",
+        "healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef",
+        "healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302",
+        "healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4",
+        "healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f",
+        "healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0",
+        "healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a",
+        "healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1"
+      ],
+      "validation": [
+        "healthbench-hard-0a3a967c-e708-425b-82cd-2c849f385509",
+        "healthbench-hard-215e212c-d52c-4a63-8fda-d023667210e2",
+        "healthbench-hard-2694a753-2f57-41eb-a7f9-8c4c7acdd2e8",
+        "healthbench-hard-548d946d-8e9d-468f-b88e-b3e976f22d47",
+        "healthbench-hard-5c1ce5bb-7295-4088-bd9d-3cd90f716ae2",
+        "healthbench-hard-7b821797-070d-4fa4-80f1-cd2e9e1d61a1",
+        "healthbench-hard-8aadd85d-1aa2-4046-a854-884c6ec4ff34",
+        "healthbench-hard-a6fba6d3-ba9b-4eb1-a93e-7941b55e6a77",
+        "healthbench-hard-b445504c-da13-4b98-9d5e-c0af00c36a81",
+        "healthbench-hard-c817c521-8055-4320-8305-cdc4c19edecc",
+        "healthbench-hard-f24935ac-0530-4063-b2f1-ac45cd265037",
+        "healthbench-hard-f802f207-58d4-4001-b53c-2908b6dd0342"
+      ]
+    },
+    {
+      "domain": "qf",
+      "seed": 20260919,
+      "version": "v1",
+      "n_pool": 54,
+      "n_dev": 8,
+      "n_validation": 8,
+      "requested": {
+        "dev": 8,
+        "validation": 8
+      },
+      "strata": {
+        "easy": {
+          "pool": 1,
+          "dev": 0,
+          "validation": 0,
+          "unused": 1
+        },
+        "hard": {
+          "pool": 26,
+          "dev": 4,
+          "validation": 4,
+          "unused": 18
+        },
+        "medium": {
+          "pool": 24,
+          "dev": 4,
+          "validation": 3,
+          "unused": 17
+        },
+        "unknown": {
+          "pool": 3,
+          "dev": 0,
+          "validation": 1,
+          "unused": 2
+        }
+      },
+      "dev": [
+        "alpha-hedge-strategy",
+        "bl-regime-hmm",
+        "copula-sampling-rank-correlation",
+        "double-sort",
+        "fomc-tone-event-study",
+        "form4-cross-sectional-sale-pressure",
+        "residual-momentum",
+        "var-es-estimation"
+      ],
+      "validation": [
+        "asian-option-levy-curran",
+        "binance-btc-participation-tca",
+        "compound-option-geske",
+        "digital-barrier-options",
+        "mc-greek-surface-1",
+        "realized-vol-estimators",
+        "regime-riskparity-cvar",
+        "stable-residual"
+      ]
+    },
+    {
+      "domain": "tau3",
+      "seed": 20260919,
+      "version": "v1",
+      "n_pool": 67,
+      "n_dev": 8,
+      "n_validation": 8,
+      "requested": {
+        "dev": 8,
+        "validation": 8
+      },
+      "strata": {
+        "banking_knowledge": {
+          "pool": 67,
+          "dev": 8,
+          "validation": 8,
+          "unused": 51
+        }
+      },
+      "dev": [
+        "tau3-bench__tau3-banking_knowledge-task-008",
+        "tau3-bench__tau3-banking_knowledge-task-026",
+        "tau3-bench__tau3-banking_knowledge-task-062",
+        "tau3-bench__tau3-banking_knowledge-task-079",
+        "tau3-bench__tau3-banking_knowledge-task-080",
+        "tau3-bench__tau3-banking_knowledge-task-091",
+        "tau3-bench__tau3-banking_knowledge-task-097",
+        "tau3-bench__tau3-banking_knowledge-task-100"
+      ],
+      "validation": [
+        "tau3-bench__tau3-banking_knowledge-task-018",
+        "tau3-bench__tau3-banking_knowledge-task-043",
+        "tau3-bench__tau3-banking_knowledge-task-045",
+        "tau3-bench__tau3-banking_knowledge-task-048",
+        "tau3-bench__tau3-banking_knowledge-task-049",
+        "tau3-bench__tau3-banking_knowledge-task-051",
+        "tau3-bench__tau3-banking_knowledge-task-071",
+        "tau3-bench__tau3-banking_knowledge-task-098"
+      ]
+    },
+    {
+      "domain": "hle",
+      "seed": 20260919,
+      "version": "v1",
+      "n_pool": 412,
+      "n_dev": 12,
+      "n_validation": 12,
+      "requested": {
+        "dev": 12,
+        "validation": 12
+      },
+      "strata": {
+        "Chemistry": {
+          "pool": 132,
+          "dev": 4,
+          "validation": 4,
+          "unused": 124
+        },
+        "Computer Science/AI": {
+          "pool": 192,
+          "dev": 6,
+          "validation": 5,
+          "unused": 181
+        },
+        "Engineering": {
+          "pool": 88,
+          "dev": 2,
+          "validation": 3,
+          "unused": 83
+        }
+      },
+      "dev": [
+        "hle__66e8ae613aa94517d4573b33",
+        "hle__66edf49c46d28f04618d6498",
+        "hle__66ff0a666dc4b2ab76a19db9",
+        "hle__67082afe09cbab4e7c6f62aa",
+        "hle__6711410d39fb87be5f2f165d",
+        "hle__6715b2dab3287d3dd4db03d6",
+        "hle__671bf02518de98fe736cc1b5",
+        "hle__671ebbf35cc535d3e94216ac",
+        "hle__671f941e919b83ce036e80d9",
+        "hle__673819ece4ea03183132a556",
+        "hle__673a32a842a12c80ec5f8012",
+        "hle__6749b01bf1f47be487dd2508"
+      ],
+      "validation": [
+        "hle__66f0ce4bba6f1855fcaa5af3",
+        "hle__66fd6e4007a5eeb48898d67b",
+        "hle__66fe817115bdbb176f2e3bbd",
+        "hle__66febb7d2cb8fd8d04bcce70",
+        "hle__66ff31e8c604a3a87b0cdf62",
+        "hle__66ffb3e3ab9ced47e903bbec",
+        "hle__67009ad56c339d61ecccb85c",
+        "hle__670ac833100f122e792a23af",
+        "hle__670eb27fd2f45b1198c87766",
+        "hle__6717b2e1961c5de74922e610",
+        "hle__672ca66099e1076f34973c1f",
+        "hle__673a6dd875a0f3c9ce243dba"
+      ]
+    }
+  ],
+  "stbench_eval_note": "Pass a task file with --tasks $(paste -sd, file.txt)"
+}

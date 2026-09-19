@@ -1,0 +1,12 @@
+{
+  "experiment_id": "health-baseline-smoke",
+  "domain": "health",
+  "date": "2026-09-19",
+  "hypothesis": "Record the existing frozen-learner HealthBench smoke run before any skill or sampling intervention.",
+  "skill_version": null,
+  "task_set": "alphabetical_limit_5",
+  "arms": ["baseline"],
+  "concurrency": null,
+  "run_dir": "runs/health-baseline",
+  "notes": "Experiment zero. First five alphabetical healthbench-hard-* training tasks via --limit 5, not a stratified research split. Exploratory only; n=5 is not statistically valid. Official summary baseline_rate=0.2452."
+}

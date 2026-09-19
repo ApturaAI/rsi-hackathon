@@ -1,0 +1,35 @@
+dataset audit (flags only; no repairs, no hidden answers)
+
+health: 200 local / 200 official-train · flagged 5 · duplicate groups 0
+  strata: {'context_seeking': 100, 'emergency_referrals': 37, 'health_data_tasks': 63}
+  flags: {'extreme_prompt_length': 1, 'short_prompt': 4}
+
+qf: 54 local / 54 official-train · flagged 6 · duplicate groups 0
+  strata: {'easy': 1, 'hard': 26, 'medium': 24, 'unknown': 3}
+  flags: {'extreme_prompt_length': 3, 'missing_difficulty': 3}
+
+tau3: 67 local / 67 official-train · flagged 0 · duplicate groups 0
+  strata: {'banking_knowledge': 67}
+
+hle: 412 local / 412 official-train · flagged 6 · duplicate groups 0
+  strata: {'Chemistry': 132, 'Computer Science/AI': 192, 'Engineering': 88}
+  flags: {'extreme_prompt_length': 5, 'short_prompt': 1}
+
+flagged tasks (name · flags):
+  health/healthbench-hard-0a3a967c-e708-425b-82cd-2c849f385509  ['short_prompt']
+  health/healthbench-hard-35e54c82-65e9-4f2c-b9bb-5e341cc453f8  ['short_prompt']
+  health/healthbench-hard-6bfef3af-bf7e-4ad6-b8d9-70bb489d54aa  ['short_prompt']
+  health/healthbench-hard-a109e323-451d-4655-922c-595765e7e4af  ['short_prompt']
+  health/healthbench-hard-b2256875-a184-4447-a53a-34e8a10fba8b  ['extreme_prompt_length']
+  qf/compound-option-geske  ['missing_difficulty']
+  qf/credit-portfolio-var-cvar  ['extreme_prompt_length']
+  qf/first-passage-time  ['missing_difficulty']
+  qf/multimodal-alpha-fusion-edgar-cot-gdelt  ['extreme_prompt_length']
+  qf/ohlc-realized-vol-estimators  ['missing_difficulty']
+  qf/stable-residual  ['extreme_prompt_length']
+  hle/hle__66ea12d21684c1846037a28d  ['extreme_prompt_length']
+  hle/hle__66f820bb7ea359a842b73398  ['extreme_prompt_length']
+  hle/hle__66fb60f0fce3673bfc606f35  ['extreme_prompt_length']
+  hle/hle__671e8d8879b410d671a7d702  ['short_prompt']
+  hle/hle__67228ecf93273f2ea4d39e3e  ['extreme_prompt_length']
+  hle/hle__6725a933e10373a976b7e2a2  ['extreme_prompt_length']

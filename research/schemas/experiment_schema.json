@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExperimentManifest",
+  "description": "Minimal record for one local stbench eval. Official scoring stays in the harness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_id",
+    "domain",
+    "date",
+    "hypothesis",
+    "task_set",
+    "arms",
+    "run_dir"
+  ],
+  "properties": {
+    "experiment_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "enum": ["health", "qf", "tau3", "hle"]},
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "hypothesis": {"type": "string"},
+    "skill_version": {"type": ["string", "null"]},
+    "task_set": {"type": "string"},
+    "arms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "enum": ["baseline", "placebo", "skill"]}
+    },
+    "concurrency": {"type": ["integer", "null"], "minimum": 1},
+    "run_dir": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}

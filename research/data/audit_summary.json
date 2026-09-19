@@ -1,0 +1,78 @@
+[
+  {
+    "domain": "health",
+    "benchmark": "healthbench",
+    "n_local_tasks": 200,
+    "n_official_train": 200,
+    "n_missing_locally": 0,
+    "n_not_in_official_train": 0,
+    "n_flagged": 5,
+    "flag_counts": {
+      "extreme_prompt_length": 1,
+      "short_prompt": 4
+    },
+    "stratum_counts": {
+      "context_seeking": 100,
+      "emergency_referrals": 37,
+      "health_data_tasks": 63
+    },
+    "n_exact_duplicate_groups": 0,
+    "missing_local_official_train_count": 0
+  },
+  {
+    "domain": "qf",
+    "benchmark": "qfbench",
+    "n_local_tasks": 54,
+    "n_official_train": 54,
+    "n_missing_locally": 0,
+    "n_not_in_official_train": 0,
+    "n_flagged": 6,
+    "flag_counts": {
+      "extreme_prompt_length": 3,
+      "missing_difficulty": 3
+    },
+    "stratum_counts": {
+      "easy": 1,
+      "hard": 26,
+      "medium": 24,
+      "unknown": 3
+    },
+    "n_exact_duplicate_groups": 0,
+    "missing_local_official_train_count": 0
+  },
+  {
+    "domain": "tau3",
+    "benchmark": "tau3bench",
+    "n_local_tasks": 67,
+    "n_official_train": 67,
+    "n_missing_locally": 0,
+    "n_not_in_official_train": 0,
+    "n_flagged": 0,
+    "flag_counts": {},
+    "stratum_counts": {
+      "banking_knowledge": 67
+    },
+    "n_exact_duplicate_groups": 0,
+    "missing_local_official_train_count": 0
+  },
+  {
+    "domain": "hle",
+    "benchmark": "hlebench",
+    "n_local_tasks": 412,
+    "n_official_train": 412,
+    "n_missing_locally": 0,
+    "n_not_in_official_train": 0,
+    "n_flagged": 6,
+    "flag_counts": {
+      "extreme_prompt_length": 5,
+      "short_prompt": 1
+    },
+    "stratum_counts": {
+      "Chemistry": 132,
+      "Computer Science/AI": 192,
+      "Engineering": 88
+    },
+    "n_exact_duplicate_groups": 0,
+    "missing_local_official_train_count": 0
+  }
+]
