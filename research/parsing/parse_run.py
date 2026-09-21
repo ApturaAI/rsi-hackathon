@@ -164,12 +164,20 @@ def _trial_fields(trial: Path | None) -> tuple[dict, list[str]]:
         except OSError as status_error:
             errors.append(f"grading_status: {status_error}")
 
-    reward, reward_error = _load_json(trial / "verifier" / "reward.json")
-    if reward_error:
-        errors.append(reward_error)
-    verdicts, verdicts_error = _load_json(trial / "verifier" / "verdicts.json")
-    if verdicts_error:
-        errors.append(verdicts_error)
+    # HealthBench writes reward.json / verdicts.json; other benchmarks do not.
+    reward = verdicts = None
+    if (trial / "verifier" / "reward.json").is_file():
+        reward, reward_error = _load_json(trial / "verifier" / "reward.json")
+        if reward_error:
+            errors.append(reward_error)
+    if (trial / "verifier" / "verdicts.json").is_file():
+        verdicts, verdicts_error = _load_json(trial / "verifier" / "verdicts.json")
+        if verdicts_error:
+            errors.append(verdicts_error)
+    if reward is None and (trial / "verifier" / "result.json").is_file():
+        reward, reward_error = _load_json(trial / "verifier" / "result.json")
+        if reward_error:
+            errors.append(reward_error)
 
     traj, traj_errors = _trajectory_stats(trial)
     errors.extend(traj_errors)

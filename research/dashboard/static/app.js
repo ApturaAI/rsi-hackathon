@@ -51,14 +51,13 @@ function domainCard(d) {
       <p class="empty">No comparison run yet</p>
     </article>`;
   }
-  const note = d.status === "baseline_only"
-    ? `<p class="muted footnote">Latest is baseline-only. No comparison run yet.</p>`
+  const note = d.status === "no_placebo"
+    ? `<p class="muted footnote">Latest run has no placebo arm. No leaderboard-style comparison yet.</p>`
     : "";
   return `<article class="card">
     <h3>${escape(d.domain)} <span class="pill">${escape(d.latest || "")}</span></h3>
     <div class="hero">${fmt.delta(d.net_delta)}</div>
     <div class="kvs">
-      <span>Baseline</span><span>${fmt.score(d.baseline)}</span>
       <span>Placebo</span><span>${fmt.score(d.placebo)}</span>
       <span>Skill</span><span>${fmt.score(d.skill)}</span>
       <span>Net Δ</span><span>${fmt.delta(d.net_delta)}</span>
@@ -77,10 +76,8 @@ function runRow(r) {
     <td>${fmt.text(r.learner)}</td>
     <td>${escape((r.arms || []).join(", ") || "—")}</td>
     <td class="num">${fmt.int(r.n_tasks)}</td>
-    <td class="num">${fmt.score(r.baseline)}</td>
     <td class="num">${fmt.score(r.placebo)}</td>
     <td class="num">${fmt.score(r.skill)}</td>
-    <td class="num">${fmt.delta(r.delta)}</td>
     <td class="num">${fmt.delta(r.net_delta)}</td>
     <td class="num">${fmt.int(r.learner_tokens)}</td>
     <td class="num">${fmt.int(r.grader_tokens)}</td>
@@ -105,13 +102,13 @@ function renderOverview(data) {
           <thead>
             <tr>
               <th>Run</th><th>Domain</th><th>Benchmark</th><th>Learner</th><th>Arms</th>
-              <th class="num">Tasks</th><th class="num">Baseline</th><th class="num">Placebo</th>
-              <th class="num">Skill</th><th class="num">Δ vs base</th><th class="num">Skill − placebo</th>
+              <th class="num">Tasks</th><th class="num">Placebo</th>
+              <th class="num">Skill</th><th class="num">Skill − placebo</th>
               <th class="num">Learner tok</th><th class="num">Grader tok</th>
               <th class="num">Learner $</th><th class="num">Grader $</th><th>Note</th>
             </tr>
           </thead>
-          <tbody>${runs.map(runRow).join("") || `<tr><td colspan="16" class="empty">No runs found</td></tr>`}</tbody>
+          <tbody>${runs.map(runRow).join("") || `<tr><td colspan="14" class="empty">No runs found</td></tr>`}</tbody>
         </table>
       </div>
     </section>`;
@@ -161,7 +158,7 @@ function renderRun(run) {
   const c = run.comparison || {};
   const regs = run.regressions || {};
   const pairs = [...(run.pairs || [])].sort((a, b) => (a.delta ?? 0) - (b.delta ?? 0));
-  const hasCompare = (run.arms || []).includes("skill") && ((run.arms || []).includes("placebo") || (run.arms || []).includes("baseline"));
+  const hasCompare = (run.arms || []).includes("skill") && (run.arms || []).includes("placebo");
   app.innerHTML = `
     <a class="back" href="#/">← Overview</a>
     <section class="two">
@@ -173,11 +170,9 @@ function renderRun(run) {
           <span>Learner</span><span>${fmt.text(run.learner)}</span>
           <span>Arms</span><span>${escape((run.arms || []).join(", "))}</span>
           <span>Tasks</span><span>${fmt.int(run.n_tasks)}</span>
-          <span>Baseline</span><span>${fmt.score(run.baseline)}</span>
           <span>Placebo</span><span>${fmt.score(run.placebo)}</span>
           <span>Skill</span><span>${fmt.score(run.skill)}</span>
           <span>Skill − placebo</span><span>${fmt.delta(run.net_delta)}</span>
-          <span>Skill − baseline</span><span>${fmt.delta(run.delta)}</span>
           <span>Note</span><span>${fmt.text(run.official_note)}</span>
         </div>
       </article>
@@ -201,17 +196,17 @@ function renderRun(run) {
       <p class="muted footnote">${escape(c.derived_from || "Official rates. Missing arms are unavailable, not zero.")}</p>
       <div class="scroll">
         <table>
-          <thead><tr><th>Metric</th><th class="num">Baseline</th><th class="num">Placebo</th><th class="num">Skill</th></tr></thead>
+          <thead><tr><th>Metric</th><th class="num">Placebo</th><th class="num">Skill</th></tr></thead>
           <tbody>
-            <tr><td>Mean score (official)</td><td class="num">${fmt.score(c.mean_score?.baseline)}</td><td class="num">${fmt.score(c.mean_score?.placebo)}</td><td class="num">${fmt.score(c.mean_score?.skill)}</td></tr>
-            <tr><td>Pass rate (derived)</td><td class="num">${fmt.score(c.pass_rate?.baseline)}</td><td class="num">${fmt.score(c.pass_rate?.placebo)}</td><td class="num">${fmt.score(c.pass_rate?.skill)}</td></tr>
-            <tr><td>Tasks</td><td class="num" colspan="3">${fmt.int(run.n_tasks)}</td></tr>
-            <tr><td>Learner tokens / $</td><td class="num" colspan="3">${fmt.int(run.learner_tokens)} · ${fmt.usd(run.learner_cost)}</td></tr>
-            <tr><td>Grader tokens / $</td><td class="num" colspan="3">${fmt.int(run.grader_tokens)} · ${fmt.usd(run.grader_cost)}</td></tr>
+            <tr><td>Mean score (official)</td><td class="num">${fmt.score(c.mean_score?.placebo)}</td><td class="num">${fmt.score(c.mean_score?.skill)}</td></tr>
+            <tr><td>Pass rate (derived)</td><td class="num">${fmt.score(c.pass_rate?.placebo)}</td><td class="num">${fmt.score(c.pass_rate?.skill)}</td></tr>
+            <tr><td>Tasks</td><td class="num" colspan="2">${fmt.int(run.n_tasks)}</td></tr>
+            <tr><td>Learner tokens / $</td><td class="num" colspan="2">${fmt.int(run.learner_tokens)} · ${fmt.usd(run.learner_cost)}</td></tr>
+            <tr><td>Grader tokens / $</td><td class="num" colspan="2">${fmt.int(run.grader_tokens)} · ${fmt.usd(run.grader_cost)}</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Skill − placebo: ${fmt.delta(c.skill_minus_placebo)} · Skill − baseline: ${fmt.delta(c.skill_minus_baseline)}</p>
+      <p>Skill − placebo: ${fmt.delta(c.skill_minus_placebo)}</p>
     </section>
     ${hasCompare ? `
     <section class="section">

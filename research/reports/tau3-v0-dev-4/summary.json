@@ -1,0 +1,117 @@
+{
+  "run_dir": "/Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/tau3-v0-dev-4",
+  "domain": "tau3",
+  "benchmark": "tau3bench",
+  "learner": {
+    "model": "zai-glm-5-3-flash",
+    "agent": "openhands-sdk",
+    "agent_kwargs": {
+      "version": "1.47.0",
+      "max_iterations": 100,
+      "skill_paths": [
+        "/harbor/skills"
+      ]
+    }
+  },
+  "skill_dir": "/Users/dan/2026/Hackathons/Aptura/rsi-hackathon/submissions/dan/tau3-v0",
+  "arms": [
+    "placebo",
+    "skill"
+  ],
+  "tasks": [
+    "tau3-bench__tau3-banking_knowledge-task-008",
+    "tau3-bench__tau3-banking_knowledge-task-026",
+    "tau3-bench__tau3-banking_knowledge-task-062"
+  ],
+  "official_summary": {
+    "baseline_rate": null,
+    "placebo_rate": 0.0,
+    "skill_rate": 0.3333,
+    "delta": null,
+    "net_delta": 0.3333,
+    "n_pairs": 3,
+    "n_tasks": 3,
+    "n_invalidated_tasks": 0,
+    "n_invalidated_per_arm": {
+      "placebo": 0,
+      "skill": 0
+    },
+    "ci95": null,
+    "note": "pipeline_green_not_statistically_valid",
+    "arms": [
+      "placebo",
+      "skill"
+    ],
+    "control": "placebo",
+    "per_task": [
+      {
+        "task_id": "tau3bench-train-tau3-bench__tau3-banking_knowledge-task-008",
+        "baseline": null,
+        "placebo": 0.0,
+        "skill": 1.0
+      },
+      {
+        "task_id": "tau3bench-train-tau3-bench__tau3-banking_knowledge-task-026",
+        "baseline": null,
+        "placebo": 0.0,
+        "skill": 0.0
+      },
+      {
+        "task_id": "tau3bench-train-tau3-bench__tau3-banking_knowledge-task-062",
+        "baseline": null,
+        "placebo": 0.0,
+        "skill": 0.0
+      }
+    ],
+    "by_domain": {
+      "tau3bench": {
+        "baseline_rate": null,
+        "placebo_rate": 0.0,
+        "skill_rate": 0.3333,
+        "net_delta": 0.3333,
+        "n_tasks": 3
+      }
+    }
+  },
+  "learner_usage": {
+    "prompt_tokens": 5650238,
+    "completion_tokens": 17017,
+    "cached_tokens": 5175936,
+    "total_tokens": 5667255
+  },
+  "learner_cost": {
+    "estimated_usd": 0.23493188,
+    "by_model": {
+      "zai:glm@5.3-flash-0": 0.23493188
+    },
+    "n_priced": 118,
+    "incomplete": false
+  },
+  "grader_usage": {
+    "prompt_tokens": 100205,
+    "completion_tokens": 2488,
+    "cached_tokens": 0,
+    "total_tokens": 102693
+  },
+  "grader_cost": {
+    "estimated_usd": 0.337935,
+    "by_model": {
+      "anthropic-claude-sonnet-4-6": 0.337935
+    },
+    "n_priced": 34,
+    "incomplete": false
+  },
+  "n_attempts": 6,
+  "outcome_counts": {
+    "learner_outcome": 6
+  },
+  "arm_counts": {
+    "placebo": 3,
+    "skill": 3
+  },
+  "mean_score_by_arm": {
+    "placebo": 0.0,
+    "skill": 0.3333
+  },
+  "note": "Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted."
+}

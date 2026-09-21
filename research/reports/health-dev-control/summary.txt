@@ -1,0 +1,37 @@
+run: /Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/health-dev-control
+domain: health (healthbench)
+arms: baseline, placebo
+tasks: 12 · attempts: 24
+official baseline_rate: 0.2418
+official note: None
+outcome_counts: {'learner_outcome': 24}
+mean_score_by_arm (learner_outcome only): {'baseline': 0.2418, 'placebo': 0.2517}
+learner tokens: 524892 · learner $0.03261721 · grader $0.777182
+
+per-attempt:
+  baseline  0.47368421052631576 learner_outcome  ans=10540 steps=5 tools=2 theme=health_data_tasks  healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c
+  placebo   0.6710526315789473 learner_outcome  ans=12637 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c
+  baseline  0.23333333333333334 learner_outcome  ans=1815 steps=4 tools=2 theme=emergency_referrals  healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755
+  placebo   0.25555555555555554 learner_outcome  ans=2267 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755
+  baseline  0.7714285714285715 learner_outcome  ans=3638 steps=4 tools=2 theme=health_data_tasks  healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed
+  placebo   0.5428571428571428 learner_outcome  ans=4726 steps=6 tools=4 theme=health_data_tasks  healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed
+  baseline  0.15151515151515152 learner_outcome  ans=1516 steps=4 tools=2 theme=context_seeking  healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902
+  placebo   -0.06060606060606061 learner_outcome  ans=1597 steps=4 tools=1 theme=context_seeking  healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902
+  baseline  0.0      learner_outcome  ans=2212 steps=6 tools=4 theme=context_seeking  healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef
+  placebo   0.1388888888888889 learner_outcome  ans=1883 steps=4 tools=2 theme=context_seeking  healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef
+  baseline  0.2608695652173913 learner_outcome  ans=1981 steps=4 tools=2 theme=context_seeking  healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef
+  placebo   0.2608695652173913 learner_outcome  ans=2085 steps=4 tools=1 theme=context_seeking  healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef
+  baseline  -0.15    learner_outcome  ans=882 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302
+  placebo   -0.06666666666666667 learner_outcome  ans=1793 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302
+  baseline  -0.1111111111111111 learner_outcome  ans=0 steps=6 tools=4 theme=health_data_tasks  healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4
+  placebo   -0.1111111111111111 learner_outcome  ans=0 steps=6 tools=4 theme=health_data_tasks  healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4
+  baseline  0.03389830508474576 learner_outcome  ans=1780 steps=4 tools=2 theme=context_seeking  healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f
+  placebo   0.15254237288135594 learner_outcome  ans=1970 steps=5 tools=2 theme=context_seeking  healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f
+  baseline  0.46153846153846156 learner_outcome  ans=4090 steps=4 tools=2 theme=context_seeking  healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0
+  placebo   0.46153846153846156 learner_outcome  ans=3423 steps=4 tools=1 theme=context_seeking  healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0
+  baseline  0.5151515151515151 learner_outcome  ans=2112 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a
+  placebo   0.5151515151515151 learner_outcome  ans=1647 steps=5 tools=2 theme=emergency_referrals  healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a
+  baseline  0.2608695652173913 learner_outcome  ans=702 steps=5 tools=2 theme=context_seeking  healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1
+  placebo   0.2608695652173913 learner_outcome  ans=1598 steps=4 tools=1 theme=context_seeking  healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1
+
+Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted.

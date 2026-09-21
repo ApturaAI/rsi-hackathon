@@ -1,0 +1,49 @@
+run: /Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/health-dev-v1
+domain: health (healthbench)
+arms: baseline, placebo, skill
+tasks: 12 · attempts: 36
+official baseline_rate: 0.287
+official note: None
+outcome_counts: {'learner_outcome': 36}
+mean_score_by_arm (learner_outcome only): {'baseline': 0.287, 'placebo': 0.2741, 'skill': 0.2087}
+learner tokens: 889777 · learner $0.05442084 · grader $1.127987
+
+per-attempt:
+  baseline  0.17777777777777778 learner_outcome  ans=2313 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755
+  skill     0.47368421052631576 learner_outcome  ans=5871 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c
+  baseline  0.5789473684210527 learner_outcome  ans=9281 steps=5 tools=2 theme=health_data_tasks  healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c
+  placebo   0.6578947368421053 learner_outcome  ans=11772 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c
+  skill     0.05555555555555555 learner_outcome  ans=2217 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755
+  placebo   0.4888888888888889 learner_outcome  ans=2895 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755
+  placebo   0.34285714285714286 learner_outcome  ans=4063 steps=5 tools=2 theme=health_data_tasks  healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed
+  baseline  0.5714285714285714 learner_outcome  ans=4544 steps=6 tools=3 theme=health_data_tasks  healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed
+  skill     0.11428571428571428 learner_outcome  ans=1869 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed
+  baseline  0.3787878787878788 learner_outcome  ans=1611 steps=5 tools=3 theme=context_seeking  healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902
+  skill     0.07575757575757576 learner_outcome  ans=962 steps=5 tools=3 theme=context_seeking  healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902
+  placebo   0.07575757575757576 learner_outcome  ans=1501 steps=5 tools=2 theme=context_seeking  healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902
+  baseline  0.1388888888888889 learner_outcome  ans=2471 steps=5 tools=3 theme=context_seeking  healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef
+  placebo   0.1388888888888889 learner_outcome  ans=2850 steps=5 tools=3 theme=context_seeking  healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef
+  baseline  0.2608695652173913 learner_outcome  ans=1476 steps=5 tools=3 theme=context_seeking  healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef
+  skill     0.19444444444444445 learner_outcome  ans=519 steps=4 tools=2 theme=context_seeking  healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef
+  placebo   -0.021739130434782608 learner_outcome  ans=1982 steps=5 tools=3 theme=context_seeking  healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef
+  skill     0.3695652173913043 learner_outcome  ans=1930 steps=5 tools=3 theme=context_seeking  healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef
+  baseline  0.016666666666666666 learner_outcome  ans=1769 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302
+  placebo   0.1      learner_outcome  ans=1506 steps=5 tools=2 theme=health_data_tasks  healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302
+  skill     0.16666666666666666 learner_outcome  ans=1219 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302
+  baseline  -0.26666666666666666 learner_outcome  ans=0 steps=6 tools=4 theme=health_data_tasks  healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4
+  placebo   -0.1111111111111111 learner_outcome  ans=0 steps=7 tools=5 theme=health_data_tasks  healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4
+  placebo   0.05084745762711865 learner_outcome  ans=1918 steps=4 tools=1 theme=context_seeking  healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f
+  skill     0.0      learner_outcome  ans=504 steps=5 tools=3 theme=health_data_tasks  healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4
+  baseline  0.23728813559322035 learner_outcome  ans=2133 steps=5 tools=3 theme=context_seeking  healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f
+  skill     -0.15254237288135594 learner_outcome  ans=1540 steps=5 tools=3 theme=context_seeking  healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f
+  baseline  0.46153846153846156 learner_outcome  ans=3692 steps=5 tools=3 theme=context_seeking  healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0
+  placebo   0.6666666666666666 learner_outcome  ans=3786 steps=5 tools=3 theme=context_seeking  healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0
+  skill     0.46153846153846156 learner_outcome  ans=1971 steps=5 tools=3 theme=context_seeking  healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0
+  baseline  0.7575757575757576 learner_outcome  ans=1555 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a
+  placebo   0.696969696969697 learner_outcome  ans=1926 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a
+  skill     0.48484848484848486 learner_outcome  ans=812 steps=5 tools=3 theme=emergency_referrals  healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a
+  baseline  0.13043478260869565 learner_outcome  ans=1489 steps=4 tools=1 theme=context_seeking  healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1
+  placebo   0.2028985507246377 learner_outcome  ans=1653 steps=5 tools=2 theme=context_seeking  healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1
+  skill     0.2608695652173913 learner_outcome  ans=865 steps=5 tools=2 theme=context_seeking  healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1
+
+Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted.

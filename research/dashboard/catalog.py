@@ -172,15 +172,12 @@ def _pair_tasks(eval_result: dict, attempts: list[dict]) -> list[dict]:
         tid = str(row.get("task_id") or "")
         placebo = _num(row.get("placebo"))
         skill = _num(row.get("skill"))
-        baseline = _num(row.get("baseline"))
-        control = "placebo" if placebo is not None and skill is not None else (
-            "baseline" if baseline is not None and skill is not None else None
-        )
-        left = placebo if control == "placebo" else baseline
+        control = "placebo" if placebo is not None and skill is not None else None
+        left = placebo
         delta = None
         if control and left is not None and skill is not None:
             skill_ok = outcomes.get((tid, "skill"), "learner_outcome") == "learner_outcome"
-            ctrl_ok = outcomes.get((tid, control), "learner_outcome") == "learner_outcome"
+            ctrl_ok = outcomes.get((tid, "placebo"), "learner_outcome") == "learner_outcome"
             if skill_ok and ctrl_ok:
                 delta = round(skill - left, 6)
             else:
@@ -188,7 +185,6 @@ def _pair_tasks(eval_result: dict, attempts: list[dict]) -> list[dict]:
         pairs.append({
             "task_id": tid,
             "task_name": names.get(tid) or (meta.get(tid) or {}).get("task_name"),
-            "baseline": baseline,
             "placebo": placebo,
             "skill": skill,
             "control": control,
@@ -213,8 +209,7 @@ def _stratum_rollups(pairs: list[dict]) -> list[dict]:
     out = []
     for name, rows in sorted(buckets.items()):
         control = rows[0].get("control")
-        left_key = "placebo" if control == "placebo" else "baseline"
-        lefts = [r[left_key] for r in rows if r.get(left_key) is not None]
+        lefts = [r["placebo"] for r in rows if r.get("placebo") is not None]
         skills = [r["skill"] for r in rows if r.get("skill") is not None]
         out.append({
             "stratum": name,
@@ -299,7 +294,12 @@ def load_run(name: str) -> dict | None:
             "official_arms": parsed.get("arms"),
         }
     attempts = _attempts_for(name)
-    arms = list(eval_result.get("arms") or (parsed or {}).get("arms") or [])
+    arms = [a for a in (eval_result.get("arms") or (parsed or {}).get("arms") or []) if a in ("placebo", "skill")]
+    if not arms:
+        # Fall back to arms present in attempts when eval_result omits them.
+        seen = {str(row.get("arm") or "") for row in attempts}
+        arms = [a for a in ("placebo", "skill") if a in seen]
+    attempts = [row for row in attempts if str(row.get("arm") or "") in {"placebo", "skill"}]
     learner = eval_result.get("learner") or (parsed or {}).get("learner") or {}
     learner_cost = _usd(eval_result.get("learner_cost") or (parsed or {}).get("learner_cost"))
     grader_cost = _usd(eval_result.get("grader_cost") or (parsed or {}).get("grader_cost"))
@@ -324,10 +324,8 @@ def load_run(name: str) -> dict | None:
         "arms": arms,
         "n_tasks": n_tasks,
         "n_attempts": len(attempts),
-        "baseline": rates.get("baseline"),
         "placebo": rates.get("placebo"),
         "skill": rates.get("skill"),
-        "delta": rates.get("delta"),
         "net_delta": rates.get("net_delta"),
         "official_note": rates.get("official_note"),
         "learner_tokens": _tokens(eval_result.get("learner_usage") or (parsed or {}).get("learner_usage")),
@@ -345,15 +343,13 @@ def load_run(name: str) -> dict | None:
         "pairs": pairs,
         "comparison": {
             "mean_score": {
-                "baseline": rates.get("baseline"),
                 "placebo": rates.get("placebo"),
                 "skill": rates.get("skill"),
             },
-            "pass_rate": {arm: _pass_rate(attempts, arm) for arm in ("baseline", "placebo", "skill")},
+            "pass_rate": {arm: _pass_rate(attempts, arm) for arm in ("placebo", "skill")},
             "official": rates,
             "skill_minus_placebo": rates.get("net_delta"),
-            "skill_minus_baseline": rates.get("delta"),
-            "derived_from": "official eval_result.json rates; pass rate and task deltas from official per-task scores",
+            "derived_from": "official eval_result.json rates; pass rate and task deltas from official per-task scores (placebo vs skill only)",
         },
         "regressions": {
             "improved": [p for p in comparable if p["change"] == "improved"],
@@ -361,7 +357,7 @@ def load_run(name: str) -> dict | None:
             "unchanged": [p for p in comparable if p["change"] == "unchanged"],
             "excluded_non_learner": [
                 p for p in pairs
-                if p.get("skill") is not None and (p.get("placebo") is not None or p.get("baseline") is not None)
+                if p.get("skill") is not None and p.get("placebo") is not None
                 and p.get("delta") is None
             ],
             "by_stratum": _stratum_rollups(pairs),
@@ -378,7 +374,7 @@ def list_runs() -> list[dict]:
             continue
         summaries.append({k: run[k] for k in (
             "name", "run_dir", "domain", "benchmark", "learner", "agent", "skill_dir",
-            "arms", "n_tasks", "n_attempts", "baseline", "placebo", "skill", "delta",
+            "arms", "n_tasks", "n_attempts", "placebo", "skill",
             "net_delta", "official_note", "learner_tokens", "grader_tokens",
             "learner_cost", "grader_cost", "total_cost", "cost_per_task", "mtime",
             "has_official", "has_parsed", "outcome_counts",
@@ -402,7 +398,6 @@ def domain_overview(runs: list[dict] | None = None) -> list[dict]:
             "domain": domain,
             "n_runs": len(items),
             "latest": latest["name"] if latest else None,
-            "baseline": latest["baseline"] if latest else None,
             "placebo": latest["placebo"] if latest else None,
             "skill": latest["skill"] if latest else None,
             "net_delta": latest["net_delta"] if latest else None,
@@ -410,10 +405,8 @@ def domain_overview(runs: list[dict] | None = None) -> list[dict]:
             "total_cost": latest["total_cost"] if latest else None,
             "status": (
                 "no_run" if not latest
-                else "comparison" if latest.get("skill") is not None and (
-                    latest.get("placebo") is not None or latest.get("baseline") is not None
-                )
-                else "baseline_only"
+                else "comparison" if latest.get("skill") is not None and latest.get("placebo") is not None
+                else "no_placebo"
             ),
         })
     return cards
@@ -443,9 +436,8 @@ def load_experiments() -> list[dict]:
                 "experiment_id", "domain", "date", "hypothesis", "skill_version",
                 "task_set", "arms", "concurrency", "run_dir", "notes", "conclusion",
             )},
-            "score": (run or {}).get("skill") or (run or {}).get("baseline"),
+            "score": (run or {}).get("skill"),
             "net_delta": (run or {}).get("net_delta"),
-            "delta": (run or {}).get("delta"),
             "total_cost": (run or {}).get("total_cost"),
             "n_tasks": (run or {}).get("n_tasks"),
             "linked_run": (run or {}).get("name"),

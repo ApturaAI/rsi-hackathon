@@ -1,0 +1,188 @@
+{
+  "run_dir": "/Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/health-dev-control",
+  "domain": "health",
+  "benchmark": "healthbench",
+  "learner": {
+    "model": "zai-glm-5-3-flash",
+    "agent": "openhands-sdk",
+    "agent_kwargs": {
+      "version": "1.47.0",
+      "max_iterations": 4,
+      "skill_paths": [
+        "/harbor/skills"
+      ]
+    }
+  },
+  "skill_dir": null,
+  "arms": [
+    "baseline",
+    "placebo"
+  ],
+  "tasks": [
+    "healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c",
+    "healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755",
+    "healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed",
+    "healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902",
+    "healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef",
+    "healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef",
+    "healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302",
+    "healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4",
+    "healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f",
+    "healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0",
+    "healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a",
+    "healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1"
+  ],
+  "official_summary": {
+    "baseline_rate": 0.2418,
+    "placebo_rate": 0.2517,
+    "skill_rate": null,
+    "delta": null,
+    "net_delta": null,
+    "n_pairs": 12,
+    "n_tasks": 12,
+    "n_invalidated_tasks": 0,
+    "n_invalidated_per_arm": {
+      "baseline": 0,
+      "placebo": 0
+    },
+    "ci95": [
+      -0.4037,
+      -0.1159
+    ],
+    "note": null,
+    "arms": [
+      "baseline",
+      "placebo"
+    ],
+    "control": "placebo",
+    "per_task": [
+      {
+        "task_id": "healthbench-train-healthbench-hard-08fdc56d-a23c-4b03-bfab-0e91a089c45c",
+        "baseline": 0.47368421052631576,
+        "placebo": 0.6710526315789473,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-170e7b7e-4fdf-4dae-baf4-ad1ad6417755",
+        "baseline": 0.23333333333333334,
+        "placebo": 0.25555555555555554,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-267bda16-fd4b-4a9e-b3ac-5602c2532eed",
+        "baseline": 0.7714285714285715,
+        "placebo": 0.5428571428571428,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-2b93f371-d386-45b2-a004-f7dd73a0c902",
+        "baseline": 0.15151515151515152,
+        "placebo": -0.06060606060606061,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-613b5587-6c18-4174-a184-3a527f4bc5ef",
+        "baseline": 0.0,
+        "placebo": 0.1388888888888889,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-6e6e17c3-1334-4ecc-b7f0-1221f49d5aef",
+        "baseline": 0.2608695652173913,
+        "placebo": 0.2608695652173913,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-9c942108-b33a-460f-a2ad-2dc1bbe37302",
+        "baseline": -0.15,
+        "placebo": -0.06666666666666667,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-a038e798-8a9e-455f-8c4c-8272335f72f4",
+        "baseline": -0.1111111111111111,
+        "placebo": -0.1111111111111111,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-af0faba1-bd6c-4b7c-88e0-abd135dd2d6f",
+        "baseline": 0.03389830508474576,
+        "placebo": 0.15254237288135594,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-cbdb5416-dcc2-4a72-bf58-3523c2dfcda0",
+        "baseline": 0.46153846153846156,
+        "placebo": 0.46153846153846156,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-e9b7f69b-69ee-486b-805c-c98439ad969a",
+        "baseline": 0.5151515151515151,
+        "placebo": 0.5151515151515151,
+        "skill": null
+      },
+      {
+        "task_id": "healthbench-train-healthbench-hard-f5e8319e-5639-4274-8f5e-d3608e8259e1",
+        "baseline": 0.2608695652173913,
+        "placebo": 0.2608695652173913,
+        "skill": null
+      }
+    ],
+    "by_domain": {
+      "healthbench": {
+        "baseline_rate": 0.2418,
+        "placebo_rate": 0.2517,
+        "skill_rate": 0.0,
+        "net_delta": -0.2517,
+        "n_tasks": 12
+      }
+    },
+    "healthbench_official_score": {
+      "baseline": 0.2418,
+      "placebo": 0.2517,
+      "skill": null
+    }
+  },
+  "learner_usage": {
+    "prompt_tokens": 500245,
+    "completion_tokens": 24647,
+    "cached_tokens": 456192,
+    "total_tokens": 524892
+  },
+  "learner_cost": {
+    "estimated_usd": 0.03261721,
+    "by_model": {
+      "zai:glm@5.3-flash-0": 0.03261721
+    },
+    "n_priced": 65,
+    "incomplete": false
+  },
+  "grader_usage": {
+    "prompt_tokens": 496897,
+    "completion_tokens": 56057,
+    "cached_tokens": 0,
+    "total_tokens": 552954
+  },
+  "grader_cost": {
+    "estimated_usd": 0.777182,
+    "by_model": {
+      "anthropic-claude-haiku-4-5": 0.777182
+    },
+    "n_priced": 303,
+    "incomplete": false
+  },
+  "n_attempts": 24,
+  "outcome_counts": {
+    "learner_outcome": 24
+  },
+  "arm_counts": {
+    "baseline": 12,
+    "placebo": 12
+  },
+  "mean_score_by_arm": {
+    "baseline": 0.2418,
+    "placebo": 0.2517
+  },
+  "note": "Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted."
+}

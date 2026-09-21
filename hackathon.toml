@@ -45,7 +45,7 @@ max_files = 200
 benchmark = "qfbench"
 dataset_dir = "dataset/hackathon/QuantitativeFinance-Bench/tasks"
 max_iterations = 100
-eval_budget_tokens = 4_000_000
+eval_budget_tokens = 16_000_000
 
 [domains.health]
 benchmark = "healthbench"
@@ -70,7 +70,7 @@ user_model = "anthropic-claude-sonnet-4-6"
 nl_assertions_model = "anthropic-claude-sonnet-4-6"
 user_reasoning_effort = "low"
 judge_budget_tokens = 300_000_000
-eval_budget_tokens = 4_000_000
+eval_budget_tokens = 48_000_000
 
 [domains.hle]
 benchmark = "hlebench"

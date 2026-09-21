@@ -1,0 +1,19 @@
+run: /Users/dan/2026/Hackathons/Aptura/rsi-hackathon/runs/tau3-v0-dev-4
+domain: tau3 (tau3bench)
+arms: placebo, skill
+tasks: 3 · attempts: 6
+official baseline_rate: None
+official note: pipeline_green_not_statistically_valid
+outcome_counts: {'learner_outcome': 6}
+mean_score_by_arm (learner_outcome only): {'placebo': 0.0, 'skill': 0.3333}
+learner tokens: 5667255 · learner $0.23493188 · grader $0.337935
+
+per-attempt:
+  placebo   0.0      learner_outcome  ans=0 steps=4 tools=1  tau3-bench__tau3-banking_knowledge-task-026
+  placebo   0.0      learner_outcome  ans=0 steps=9 tools=6  tau3-bench__tau3-banking_knowledge-task-008
+  placebo   0.0      learner_outcome  ans=0 steps=8 tools=5  tau3-bench__tau3-banking_knowledge-task-062
+  skill     1.0      learner_outcome  ans=0 steps=30 tools=27  tau3-bench__tau3-banking_knowledge-task-008
+  skill     0.0      learner_outcome  ans=0 steps=39 tools=36  tau3-bench__tau3-banking_knowledge-task-026
+  skill     0.0      learner_outcome  ans=0 steps=57 tools=54  tau3-bench__tau3-banking_knowledge-task-062
+
+Local research parse of a completed run. Scores are copied from the official harness; this file does not rescore. Health verifier fields are axis/theme/point totals only — criterion text is omitted.
